@@ -1,4 +1,6 @@
-library(tidyverse)
+####### Atelier bonne pratiques R#########
+
+      library(tidyverse)
 onde<-data.table::fread("raw_data/onde_france_2022.csv")
 view(onde)
 #examen du data frame intitulé des colonnes
@@ -11,11 +13,11 @@ class(names(onde))#type de stockage
 typeof(names(onde))
 #renommage on enlève les < >
 nouveaux_noms<-stringr::str_replace(string = names(onde),
-                                    pattern = ">", 
+                                    pattern = ">",
                                     replacement ="" )
 #l"objet nouveaux_noms ecrase l'ancien
 nouveaux_noms<-stringr::str_replace(string = nouveaux_noms,
-                                    pattern = "<", 
+                                    pattern = "<",
                                     replacement ="" )
 
 view(nouveaux_noms)
@@ -37,7 +39,7 @@ test5<-onde[1:8, c("OCCITANIE","BRETAGNE")]
 nrow(onde)
 ncol(onde)
 # juste la variable
-onde$LbRsObservationNat 
+onde$LbRsObservationNat
 #examen d'un colonne
 mean(onde$CoordXSiteHydro) #moyenne (fonctionne car pas val manquantes)
 sd(onde$CoordXSiteHydro) #ecart-type(fonctionne car pas val manquantes)
@@ -63,7 +65,7 @@ rm(onde2)
 library(readODS)
 invertebres<-readODS::read_ods("raw_data/AFB_Saisie_MinvCE_DREAL_Bzh_RRP_2021.ods",
                                sheet = "04187500",
-                               skip = 86) %>% 
+                               skip = 86) %>%
   select(CODE_STATION:C)#la fonction Select selctionne des colonnes
 
 ###########################feuille de calcul #############
@@ -115,3 +117,4 @@ mapview(her2)
 ##############    package ASPE   ################
 devtools::install_github("pascalirz/aspe")
 
+############   modif didier Pujo ##########
